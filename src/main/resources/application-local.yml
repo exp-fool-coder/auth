@@ -1,10 +1,35 @@
 server:
   port: ${SERVER_PORT:8081}
+  forward-headers-strategy: framework
 spring:
   application.name: auth
+  autoconfigure.exclude:
+    - org.springframework.boot.autoconfigure.integration.IntegrationAutoConfiguration
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8080/realms/teamspace}
+            user-name-attribute: preferred_username
 
 logging:
   level:
     ROOT: WARN
     org.springframework: INFO
     com.expfool: DEBUG
+leaderboard.auth:
+  feign:
+    keycloak-url: ${KEYCLOAK_REALM_URL:http://localhost:8080/realms/teamspace/protocol/openid-connect}
+    otp-url: ${OTP_URL:http://localhost:8087}
+  keycloak:
+    client:
+      keycloak-client-id: ${KEYCLOAK_CLIENT_ID:springsecurity}
+      keycloak-client-secret: ${KEYCLOAK_SECRET:6pgARZhLJ3FxffdQbMh1a4WXKptisRsc}
+    admin:
+      url: ${KEYCLOAK_SERVER_URL:http://localhost:8080/}
+      admin-realm: ${KEYCLOAK_ADMIN_REALM:master}
+      username: ${KEYCLOAK_ADMIN_USERNAME:keycloak-admin}
+      password: ${KEYCLOAK_ADMIN_PASSWORD:admin123}
+      client-id: ${KEYCLOAK_ADMIN_CLIENT_ID:admin-cli}
+      realm: ${KEYCLOAK_REALM:teamspace}

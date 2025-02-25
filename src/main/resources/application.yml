@@ -1,10 +1,36 @@
 server:
   port: ${SERVER_PORT:8081}
+  forward-headers-strategy: framework
 spring:
   application.name: auth
+  autoconfigure.exclude:
+    - org.springframework.boot.autoconfigure.integration.IntegrationAutoConfiguration
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: ${KEYCLOAK_ISSUER_URI}
+            user-name-attribute: preferred_username
 
 logging:
   level:
     ROOT: WARN
     org.springframework: INFO
     com.expfool: ${APP_LOG_LEVEL}
+
+leaderboard.auth:
+  feign:
+    keycloak-url: ${KEYCLOAK_REALM_URL}
+    otp-url: ${OTP_URL}
+  keycloak:
+    client:
+      keycloak-client-id: ${KEYCLOAK_CLIENT_ID}
+      keycloak-client-secret: ${KEYCLOAK_SECRET}
+    admin:
+      url: ${KEYCLOAK_SERVER_URL}
+      admin-realm: ${KEYCLOAK_ADMIN_REALM}
+      username: ${KEYCLOAK_ADMIN_USERNAME}
+      password: ${KEYCLOAK_ADMIN_PASSWORD}
+      client-id: ${KEYCLOAK_ADMIN_CLIENT_ID}
+      realm: ${KEYCLOAK_REALM}

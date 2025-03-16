@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Data
 @AllArgsConstructor
-public class KeycloakUserIngoResponse {
+public class KeycloakUserInfoResponse {
 
     private String email;
 

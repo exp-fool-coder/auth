@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "otp", url = "${teamspace.auth.feign.otp-url}")
+@FeignClient(name = "otp", url = "${leaderboard.auth.feign.otp-url}")
 public interface OtpProviderClient {
 
     @GetMapping(value = "/otp-service/encoded/validation")

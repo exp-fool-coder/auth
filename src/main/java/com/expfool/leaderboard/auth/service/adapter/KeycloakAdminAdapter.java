@@ -1,7 +1,7 @@
 package com.expfool.leaderboard.auth.service.adapter;
 
-import org.keycloak.representations.account.UserRepresentation;
 import org.keycloak.representations.idm.CredentialRepresentation;
+import org.keycloak.representations.idm.UserRepresentation;
 
 import java.util.Optional;
 import java.util.UUID;

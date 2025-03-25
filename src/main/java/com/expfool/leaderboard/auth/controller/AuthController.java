@@ -1,7 +1,11 @@
 package com.expfool.leaderboard.auth.controller;
 
-import com.expfool.leaderboard.auth.domain.*;
-import com.nimbusds.openid.connect.sdk.LogoutRequest;
+import com.expfool.leaderboard.auth.domain.AccessResponse;
+import com.expfool.leaderboard.auth.domain.AuthRequest;
+import com.expfool.leaderboard.auth.domain.LogoutRequest;
+import com.expfool.leaderboard.auth.domain.RefreshRequest;
+import com.expfool.leaderboard.auth.domain.ResetPasswordRequest;
+import com.expfool.leaderboard.auth.domain.UserResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

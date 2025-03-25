@@ -1,6 +1,5 @@
 server:
-  port: ${SERVER_PORT:8081}
-  forward-headers-strategy: framework
+  port: 8081
 spring:
   application.name: auth
   autoconfigure.exclude:
@@ -13,15 +12,10 @@ spring:
             issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8080/realms/leaderboard}
             user-name-attribute: preferred_username
 
-logging:
-  level:
-    ROOT: WARN
-    org.springframework: INFO
-    com.expfool: DEBUG
 leaderboard.auth:
   feign:
-    keycloak-url: ${KEYCLOAK_REALM_URL:http://localhost:8080/realms/leaderboard/protocol/openid-connect}
     otp-url: ${OTP_URL:http://localhost:8087}
+    keycloak-url: ${KEYCLOAK_REALM_URL:http://localhost:8080/realms/leaderboard/protocol/openid-connect}
   keycloak:
     client:
       keycloak-client-id: ${KEYCLOAK_CLIENT_ID:springsecurity}
@@ -29,7 +23,7 @@ leaderboard.auth:
     admin:
       url: ${KEYCLOAK_SERVER_URL:http://localhost:8080/}
       admin-realm: ${KEYCLOAK_ADMIN_REALM:master}
-      username: ${KEYCLOAK_ADMIN_USERNAME:keycloak-admin}
-      password: ${KEYCLOAK_ADMIN_PASSWORD:admin123}
+      username: ${KEYCLOAK_ADMIN_USERNAME:admin}
+      password: ${KEYCLOAK_ADMIN_PASSWORD:admin}
       client-id: ${KEYCLOAK_ADMIN_CLIENT_ID:admin-cli}
       realm: ${KEYCLOAK_REALM:leaderboard}
